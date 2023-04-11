@@ -21,4 +21,7 @@ CREATE TABLE IF NOT EXISTS cancion
     foreign key (id_album) references album(id_album) on delete cascade
 );
 
-SELECT * FROM cancion;
+SELECT * FROM album;
+
+INSERT INTO album(nombre_album, foto_album)
+VALUES("octavarium","oct")
