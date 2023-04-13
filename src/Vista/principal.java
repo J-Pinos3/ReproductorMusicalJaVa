@@ -10,4 +10,5 @@ public class principal {
     private JButton buscarArtistaButton;
     private JButton CANCIONESButton;
     private JButton ÁLBUMSButton;
+    private JTable table1;
 }
