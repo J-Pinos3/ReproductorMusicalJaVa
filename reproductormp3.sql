@@ -23,5 +23,3 @@ CREATE TABLE IF NOT EXISTS cancion
 
 SELECT * FROM album;
 
-INSERT INTO album(nombre_album, foto_album)
-VALUES("octavarium","oct")

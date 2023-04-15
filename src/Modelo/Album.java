@@ -1,10 +1,13 @@
 package Modelo;
 
-public class Album {
+import java.io.Serializable;
+
+public class Album implements Serializable {
 
     private int id;
     private String nombre;
     private String ruta;
+    private byte[] fotico;
 
     public Album() {
     }
@@ -31,5 +34,13 @@ public class Album {
 
     public void setRuta(String ruta) {
         this.ruta = ruta;
+    }
+
+    public byte[] getFotico() {
+        return fotico;
+    }
+
+    public void setFotico(byte[] fotico) {
+        this.fotico = fotico;
     }
 }

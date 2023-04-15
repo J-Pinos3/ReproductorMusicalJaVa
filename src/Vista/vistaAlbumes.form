@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Vista.vistaAlbumes">
-  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="13" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panelAlbum" layout-manager="GridLayoutManager" row-count="15" column-count="11" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="896" height="493"/>
+      <xy x="20" y="20" width="1039" height="493"/>
     </constraints>
     <properties>
       <background color="-16777216"/>
@@ -12,7 +12,7 @@
     <children>
       <component id="4a2f3" class="javax.swing.JLabel">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font size="16"/>
@@ -20,9 +20,9 @@
           <text value="Nombre del Álbum"/>
         </properties>
       </component>
-      <component id="a48ec" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="a48ec" class="javax.swing.JTextField" binding="txtNomAlbum">
         <constraints>
-          <grid row="2" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -30,7 +30,7 @@
       </component>
       <component id="a8238" class="javax.swing.JLabel">
         <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font size="16"/>
@@ -38,9 +38,9 @@
           <text value="Carátula del Álbum"/>
         </properties>
       </component>
-      <component id="172d5" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="172d5" class="javax.swing.JTextField" binding="txtRutaAlbum">
         <constraints>
-          <grid row="6" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -48,37 +48,37 @@
       </component>
       <hspacer id="39651">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="6" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
       <hspacer id="8b8bd">
         <constraints>
-          <grid row="7" column="0" row-span="1" col-span="6" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="0" row-span="1" col-span="3" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
       <vspacer id="6e3bf">
         <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
       <vspacer id="4f18e">
         <constraints>
-          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
       <hspacer id="f2bc3">
         <constraints>
-          <grid row="5" column="0" row-span="1" col-span="6" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="0" row-span="1" col-span="3" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
       <vspacer id="791ff">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
       <component id="ac349" class="javax.swing.JLabel">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font size="16"/>
@@ -88,7 +88,7 @@
       </component>
       <component id="4d371" class="javax.swing.JButton" binding="ARCHIVOSButton" default-binding="true">
         <constraints>
-          <grid row="4" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-11946159"/>
@@ -96,52 +96,22 @@
           <text value="ARCHIVOS"/>
         </properties>
       </component>
-      <grid id="6b62d" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
-        <constraints>
-          <grid row="3" column="7" row-span="4" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="350" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
-        <border type="none"/>
-        <children>
-          <component id="54e9d" class="javax.swing.JTable" binding="table1" default-binding="true">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="50"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-16777216"/>
-              <foreground color="-1"/>
-              <gridColor color="-1"/>
-              <selectionBackground color="-9071374"/>
-            </properties>
-          </component>
-        </children>
-      </grid>
-      <hspacer id="ad816">
-        <constraints>
-          <grid row="2" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
       <hspacer id="2e266">
         <constraints>
-          <grid row="7" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="4" row-span="1" col-span="7" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
       <grid id="446d5" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="8" column="0" row-span="5" col-span="8" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="0" row-span="5" col-span="11" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-10789794"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="4122b" class="javax.swing.JButton" binding="agregarÁlbumButton" default-binding="true">
+          <component id="4122b" class="javax.swing.JButton" binding="agregarAlbumButton">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -152,7 +122,7 @@
               <text value="Agregar Álbum"/>
             </properties>
           </component>
-          <component id="d6c7c" class="javax.swing.JButton" binding="buscarÁlbumButton" default-binding="true">
+          <component id="d6c7c" class="javax.swing.JButton" binding="buscarAlbumButton">
             <constraints>
               <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -163,7 +133,7 @@
               <text value="Buscar Álbum"/>
             </properties>
           </component>
-          <component id="9f904" class="javax.swing.JButton" binding="modificarÁlbumButton" default-binding="true">
+          <component id="9f904" class="javax.swing.JButton" binding="modificarAlbumButton">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -174,7 +144,7 @@
               <text value="Modificar Álbum"/>
             </properties>
           </component>
-          <component id="c1a3" class="javax.swing.JButton" binding="eliminarÁlbumButton" default-binding="true">
+          <component id="c1a3" class="javax.swing.JButton" binding="eliminarAlbumButton">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -198,19 +168,14 @@
           </component>
         </children>
       </grid>
-      <vspacer id="89b72">
-        <constraints>
-          <grid row="2" column="6" row-span="6" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
       <hspacer id="bf772">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="8" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="11" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
       <component id="37cfe" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="8" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="10" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font size="20" style="1"/>
@@ -218,6 +183,64 @@
           <text value="Pestaña Álbumes"/>
         </properties>
       </component>
+      <hspacer id="ac320">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <vspacer id="90d18">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <hspacer id="ad816">
+        <constraints>
+          <grid row="2" column="4" row-span="1" col-span="6" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="54e9d" class="javax.swing.JTable" binding="tblAlbum">
+        <constraints>
+          <grid row="3" column="4" row-span="6" col-span="7" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-16777216"/>
+          <foreground color="-1"/>
+          <gridColor color="-1"/>
+          <selectionBackground color="-9071374"/>
+        </properties>
+      </component>
+      <component id="9ae89" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="16"/>
+          <foreground color="-1"/>
+          <text value="ID"/>
+        </properties>
+      </component>
+      <component id="e8c50" class="javax.swing.JTextField" binding="txtIdAlbum">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+        </properties>
+      </component>
+      <vspacer id="89b72">
+        <constraints>
+          <grid row="2" column="3" row-span="8" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <hspacer id="13653">
+        <constraints>
+          <grid row="2" column="10" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
     </children>
   </grid>
 </form>

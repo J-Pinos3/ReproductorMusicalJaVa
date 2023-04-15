@@ -1,19 +1,20 @@
 package Modelo;
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 
 
-public class AlbumDAO {
+public class AlbumDAO implements Serializable {
     Conexion cnn = new Conexion();
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
 
 
-    public boolean RegistrarCancion(Album alb){
+    public boolean RegistrarAlbum(Album alb){
         String sql = "INSERT INTO album(nombre_album, foto_album) VALUES(?,?)";
 
         try{
@@ -43,7 +44,7 @@ public class AlbumDAO {
         }
 
     }
-    //FIN DEL MÉTODO REGISTRARCANCION
+    //FIN DEL MÉTODO REGISTRARALBUM
 
 
 
@@ -55,12 +56,14 @@ public class AlbumDAO {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
-            Album al = new Album();
+
             while(rs.next()){
+                Album al = new Album();
                 al.setId(rs.getInt("id_album"));
                 al.setNombre(rs.getString("nombre_album"));
                 al.setRuta(rs.getString("foto_album"));
 
+                System.out.println(al.getId() + " " + al.getNombre() + " " + al.getRuta() + "\n");
                 ListaAlbu.add(al);
             }
         }catch (HeadlessException | SQLException e){
@@ -125,13 +128,13 @@ public class AlbumDAO {
 
 
 
-    public Album BuscarAlbum(int id){
+    public Album BuscarAlbum(String nom){
         Album alb = new Album();
         String sql = "SELECT * FROM album WHERE nombre_album = ?";
         try{
             con = cnn.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setInt(1,id);
+            ps.setString(1,nom);
             rs = ps.executeQuery();
 
             if(rs.next()){
