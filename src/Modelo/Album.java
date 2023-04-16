@@ -2,7 +2,7 @@ package Modelo;
 
 import java.io.Serializable;
 
-public class Album implements Serializable {
+public class Album  {
 
     private int id;
     private String nombre;

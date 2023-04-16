@@ -7,7 +7,7 @@ import java.util.List;
 import java.sql.*;
 
 
-public class AlbumDAO implements Serializable {
+public class AlbumDAO {
     Conexion cnn = new Conexion();
     Connection con;
     PreparedStatement ps;

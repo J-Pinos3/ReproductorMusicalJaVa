@@ -178,17 +178,26 @@ public class vistaAlbumes extends JFrame{
 
     public void ListarAlbumes(){
         List<Album> ListaALb = albumDao.ListarAlbum();
+        tblAlbum.setDefaultRenderer(Object.class, new Imagens_JTable()) ;
         String[] titulos = {"ID","Nombre","Carátula"};
         DefaultTableModel modelo = new DefaultTableModel(null, titulos);
+        tblAlbum.setRowHeight(80);
 
         Object[] obj = new Object[4];
         for(int i = 0; i < ListaALb.size(); i++){
             obj[0] = ListaALb.get(i).getId();
             obj[1] = ListaALb.get(i).getNombre();
-            obj[2] = ListaALb.get(i).getRuta();
+
+            JLabel lbl = new JLabel( new ImageIcon(ListaALb.get(i).getRuta()) );
+            lbl.setSize(50,50);
+            //obj[2] = new JLabel( new ImageIcon(ListaALb.get(i).getRuta()) );
+            obj[2] = lbl;
+            obj[3] = ListaALb.get(i).getRuta();
 
             modelo.addRow(obj);
         }
+
+
         tblAlbum.setModel(modelo);
     }
     //FIN DEL MÉTODO LISTAR ALBUMES
