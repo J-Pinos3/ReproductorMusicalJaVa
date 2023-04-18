@@ -11,4 +11,9 @@ public class principal {
     private JButton CANCIONESButton;
     private JButton ÁLBUMSButton;
     private JTable table1;
+    private JButton MUTEButton;
+    private JButton REPRODUCIRButton;
+    private JButton DETENERButton;
+    private JButton PAUSARButton;
+    private JProgressBar progressBar1;
 }
