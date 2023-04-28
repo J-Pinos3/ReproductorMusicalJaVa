@@ -5,9 +5,11 @@ public class Main {
         System.out.println("Prueba Commit!");
 
         //TEST DE LA PESTAÑA VISTA ALBUMES
-        vistaAlbumes vsa = new vistaAlbumes();
-        vsa.setVisible(true);
+        //vistaAlbumes vsa = new vistaAlbumes();
+        //vsa.setVisible(true);
 
+        vistaCanciones vsa = new vistaCanciones();
+        vsa.setVisible(true);
 
     }
 }
