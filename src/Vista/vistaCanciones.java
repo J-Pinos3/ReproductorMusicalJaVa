@@ -101,7 +101,26 @@ public class vistaCanciones extends JFrame{
         modificarCancionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if( "".equals(txtIdCancion.getText()) ){
+                    JOptionPane.showMessageDialog(null, "Seleccione una fila");
+                }else{
+                    if(!"".equals(txtTitulo.getText()) && !"".equals(txtArtista.getText()) && !"".equals(txtGenero.getText())
+                    && !"".equals(txtLanzamiento.getText()) && !"".equals(rutaMp3.getText()) && !"".equals(id_Album.getText()) ){
 
+                        can.setTitulo(txtTitulo.getText());
+                        can.setAutor(txtArtista.getText());
+                        can.setGenero(txtGenero.getText());
+                        can.setAnio(txtLanzamiento.getText());
+                        can.setCancionFile(rutaMp3.getText());
+                        can.setAlbumId(Integer.parseInt(id_Album.getText()) );
+
+                        cancionDao.ActualizarCancion(can);
+
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Los Campos están vacíos");
+                    }
+                }
+                ListarCanciones();
             }
         });
 
@@ -111,7 +130,39 @@ public class vistaCanciones extends JFrame{
         buscarCancionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if( !"".equals(txtTitulo.getText()) ){
+                    String nom = txtTitulo.getText();
 
+                    Cancion aux = cancionDao.BuscarCancion(nom);
+
+                    txtIdCancion.setText(""+aux.getId());
+                    txtTitulo.setText(""+aux.getTitulo());
+                    txtArtista.setText(""+aux.getAutor());
+                    txtGenero.setText(""+aux.getGenero());
+                    txtLanzamiento.setText(""+aux.getAnio());
+                    rutaMp3.setText(""+aux.getCancionFile());
+                    id_Album.setText(""+aux.getAlbumId());
+
+                    String[] titulos = {"ID","TÍTULO","AUTOR","GÉNERO","AÑO LANZAMIENTO","MP3 FILE","ALBUM ID"};
+                    DefaultTableModel modelo = new DefaultTableModel(null, titulos);
+
+                    Object[] obj = new Object[8];
+                    for(int i = 0; i <= 1; i++){
+                        obj[0] = aux.getId();
+                        obj[1] = aux.getTitulo();
+                        obj[2] = aux.getAutor();
+                        obj[3] = aux.getGenero();
+                        obj[4] = aux.getAnio();
+                        obj[5] = aux.getCancionFile();
+                        obj[6] = aux.getAlbumId();
+
+                        modelo.addRow(obj);
+                    }
+
+                    tablaSongs.setModel(modelo);
+                }else{
+                    JOptionPane.showMessageDialog(null,"Los Campos están vacíos");
+                }
             }
         });
 

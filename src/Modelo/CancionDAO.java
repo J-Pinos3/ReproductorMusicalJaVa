@@ -129,4 +129,34 @@ public class CancionDAO implements Serializable {
     }//FIN DEL MÉTODO LISTARCANCION
 
 
+    public Cancion BuscarCancion(String nom){
+        Cancion cancion = new Cancion();
+
+        String sql = "SELECT * FROM cancion WHERE titulo_cancion = ?";
+        try{
+            con = cnn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1,nom);
+            rs = ps.executeQuery();
+
+            if( rs.next() ){
+                cancion.setId(rs.getInt("id_cancion"));
+                cancion.setTitulo(rs.getString("titulo_cancion"));
+                cancion.setAutor(rs.getString("autor_cancion"));
+                cancion.setGenero(rs.getString("genero_cancion"));
+                cancion.setAnio(rs.getString("anio_cancion"));
+                cancion.setCancionFile(rs.getString("song_file"));
+                cancion.setAlbumId(rs.getInt("id_album"));
+
+            }
+
+        }catch (HeadlessException | SQLException e1){
+            JOptionPane.showMessageDialog(null,"Error -> albumDAO: " + e1.toString());
+        }
+
+
+
+        return cancion;
+    }
+
 }
