@@ -6,10 +6,14 @@ import Modelo.Conexion;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.*;
+import java.util.List;
 
 public class vistaCanciones extends JFrame{
     private JTextField txtTitulo;
@@ -35,6 +39,7 @@ public class vistaCanciones extends JFrame{
 
     public vistaCanciones() {
 
+        ListarCanciones();
         rellenarAlbumes();
 
         setContentPane(panelCancionesCrud);
@@ -66,6 +71,7 @@ public class vistaCanciones extends JFrame{
                 }else{
                     JOptionPane.showMessageDialog(null,"Los campos están vacíos");
                 }
+                ListarCanciones();
             }
         });
 
@@ -73,7 +79,20 @@ public class vistaCanciones extends JFrame{
         eliminarCancionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int seleccionado = cmbAlbum.getSelectedIndex();
+                String albumBuscar = (String)cmbAlbum.getItemAt(seleccionado);
+                if( !"".equals(txtTitulo.getText()) && !"".equals(albumBuscar)   ){
 
+                    int pregunta = JOptionPane.showConfirmDialog(null,
+                            "Seguro desea eliminar esta canción");
+
+                    if(pregunta == 0){
+                        cancionDao.EliminarCancion(txtTitulo.getText(), albumBuscar);
+                    }
+                    JOptionPane.showMessageDialog(null, "Canción Eliminada");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Los campos están vacíos");
+                }
             }
         });
 
@@ -102,7 +121,7 @@ public class vistaCanciones extends JFrame{
         listarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                ListarCanciones();
             }
         });
 
@@ -158,9 +177,42 @@ public class vistaCanciones extends JFrame{
                 }
             }
         });
+
+        /*-------------------------------------------------------------------*/
+        tablaSongs.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                int fila = tablaSongs.rowAtPoint(e.getPoint());
+
+                txtIdCancion.setText(tablaSongs.getValueAt(fila,0).toString() );
+                txtTitulo.setText(tablaSongs.getValueAt(fila,1).toString());
+                txtArtista.setText(tablaSongs.getValueAt(fila,2).toString());
+                txtGenero.setText(tablaSongs.getValueAt(fila,3).toString());
+                txtLanzamiento.setText(tablaSongs.getValueAt(fila,4).toString());
+                rutaMp3.setText(tablaSongs.getValueAt(fila,5).toString());
+                id_Album.setText(tablaSongs.getValueAt(fila,6).toString());
+                //cmbAlbum.setSelectedItem(tablaSongs.getValueAt(fila,0).toString());
+                /*
+
+                    obj[0] = ListaCan.get(i).getId();
+                    obj[1] = ListaCan.get(i).getTitulo();
+                    obj[2] = ListaCan.get(i).getAutor();
+                    obj[3] = ListaCan.get(i).getGenero();
+                    obj[4] = ListaCan.get(i).getAnio();
+                    obj[5] = ListaCan.get(i).getCancionFile();
+                    obj[6] = ListaCan.get(i).getAlbumId();
+                    rutafotico = rutaFotico(ListaCan.get(i).getAlbumId());
+                    JLabel lbl = new JLabel( new ImageIcon(rutafotico) );
+                    lbl.setSize(80,80);
+                    obj[7] = lbl;
+                    modelo.addRow(obj);
+                */
+            }
+        });
+
+
     }//CONSTRUCTOR
-
-
 
     public void rellenarAlbumes(){
         Connection con;
@@ -183,6 +235,65 @@ public class vistaCanciones extends JFrame{
         }catch (HeadlessException | SQLException E1){
             JOptionPane.showMessageDialog(null,"No se pudieron cargar los álbumes en el combo box");
         }
+    }
+
+
+    public String rutaFotico(int id){
+        Connection con;
+        PreparedStatement ps;
+        ResultSet rs;
+        Conexion cnn = new Conexion();
+        con = cnn.getConnection();
+        String sql = "SELECT foto_album from album WHERE id_album = ?";
+        String ruta = "";
+
+        try{
+            ps=con.prepareStatement(sql);
+            ps.setInt(1,id);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                //cmbAlbum.addItem(rs.getString("nombre_album"));
+                ruta = rs.getString("foto_album");
+            }
+
+            ps.close();
+            rs.close();
+        }catch (HeadlessException | SQLException E1){
+            JOptionPane.showMessageDialog(null,"No se pudieron cargar los álbumes en el combo box");
+        }
+
+        return ruta;
+    }
+
+
+    public void ListarCanciones(){
+        List<Cancion> ListaCan = cancionDao.ListarCancion();
+
+        String rutafotico = "";//rutaFotico(0);
+
+        tablaSongs.setDefaultRenderer(Object.class, new Imagens_JTable());
+        String[] titulos = {"ID","TÍTULO","AUTOR","GÉNERO","AÑO LANZAMIENTO","MP3 FILE","ALBUM ID","CARÁTULA"};
+        DefaultTableModel modelo = new DefaultTableModel(null, titulos);
+        tablaSongs.setRowHeight(100);
+
+        Object[] obj = new Object[9];
+
+        for(int i = 0; i < ListaCan.size(); i++){
+            obj[0] = ListaCan.get(i).getId();
+            obj[1] = ListaCan.get(i).getTitulo();
+            obj[2] = ListaCan.get(i).getAutor();
+            obj[3] = ListaCan.get(i).getGenero();
+            obj[4] = ListaCan.get(i).getAnio();
+            obj[5] = ListaCan.get(i).getCancionFile();
+            obj[6] = ListaCan.get(i).getAlbumId();
+            rutafotico = rutaFotico(ListaCan.get(i).getAlbumId());
+            JLabel lbl = new JLabel( new ImageIcon(rutafotico) );
+            lbl.setSize(80,80);
+            obj[7] = lbl;
+            modelo.addRow(obj);
+        }
+        tablaSongs.setModel(modelo);
     }
 
 }//FIN DE LA CLASE VISTACANCIONES
