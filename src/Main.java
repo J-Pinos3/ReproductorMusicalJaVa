@@ -7,9 +7,11 @@ public class Main {
         //TEST DE LA PESTAÑA VISTA ALBUMES
         //vistaAlbumes vsa = new vistaAlbumes();
         //vsa.setVisible(true);
+        //vistaCanciones vsa = new vistaCanciones();
+        //vsa.setVisible(true);
 
-        vistaCanciones vsa = new vistaCanciones();
-        vsa.setVisible(true);
+        principal pr = new principal();
+        pr.setVisible(true);
 
     }
 }
