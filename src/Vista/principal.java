@@ -11,10 +11,17 @@ import Modelo.Conexion;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.List;
-import javazoom.jlgui.basicplayer.BasicPlayer;
+import java.util.Map;
 
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jlgui.basicplayer.BasicPlayer;
+import javazoom.jlgui.basicplayer.BasicPlayerException;
+import javazoom.jlgui.basicplayer.*;
 
 
 public class principal extends JFrame{
@@ -36,8 +43,10 @@ public class principal extends JFrame{
     private JTextField txtAnio;
     private JTextField txtAlbum;
     private JLabel lblFoto;
+    private String cancionActual;
     Cancion can = new Cancion();
     CancionDAO cancionDao = new CancionDAO();
+
 
     public principal() {
         setContentPane(principal_panel);
@@ -74,6 +83,13 @@ public class principal extends JFrame{
         REPRODUCIRButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    bp.open(new File(cancionActual));
+                    bp.play();
+
+                } catch (BasicPlayerException ex) {
+                    throw new RuntimeException(ex);
+                }
 
             }
         });
@@ -82,7 +98,11 @@ public class principal extends JFrame{
         PAUSARButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                try {
+                    bp.pause();
+                } catch (BasicPlayerException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -90,7 +110,11 @@ public class principal extends JFrame{
         REANUDARButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                try {
+                    bp.resume();
+                } catch (BasicPlayerException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -98,7 +122,11 @@ public class principal extends JFrame{
         DETENERButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                try {
+                    bp.stop();
+                } catch (BasicPlayerException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -109,11 +137,56 @@ public class principal extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+
+                int fila = tblCanciones.rowAtPoint(e.getPoint());
+                txtTitulo.setText( tblCanciones.getValueAt(fila,1).toString() );
+                txtAutor.setText( tblCanciones.getValueAt(fila,2).toString()  );
+                txtAnio.setText( tblCanciones.getValueAt(fila,4).toString() );
+                String album = nombre_album(  (Integer) tblCanciones.getValueAt(fila, 6) );
+                txtAlbum.setText(album);
+                String rutaFoto = rutaImagen((Integer) tblCanciones.getValueAt(fila, 6));
+
+                ImageIcon image = new ImageIcon(rutaFoto);
+                Icon icon = new ImageIcon( image.getImage().getScaledInstance(80,80, Image.SCALE_DEFAULT) );
+                lblFoto.setIcon(icon);
+
+                cancionActual = tblCanciones.getValueAt(fila, 5).toString();
+
             }
         });
 
         /*--------------------------------------------------------------------*/
     }//CONSTRUCTOR
+
+
+    public String nombre_album(int id){
+        Connection con;
+        PreparedStatement ps;
+        ResultSet rs;
+        Conexion cnn = new Conexion();
+        con = cnn.getConnection();
+        String sql = "SELECT nombre_album from album WHERE id_album = ?";
+        String ruta = "";
+
+        try{
+            ps=con.prepareStatement(sql);
+            ps.setInt(1,id);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                //cmbAlbum.addItem(rs.getString("nombre_album"));
+                ruta = rs.getString("nombre_album");
+            }
+
+            ps.close();
+            rs.close();
+        }catch (HeadlessException | SQLException E1){
+            JOptionPane.showMessageDialog(null,"No se pudo obtener el nombre del album de la BD");
+        }
+
+        return ruta;
+    }
+
 
     public String rutaImagen(int id){
         Connection con;
